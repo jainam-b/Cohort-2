@@ -15,14 +15,14 @@ const User = mongoose.model("Users", {
 app.post("/signup", async function (req, res) {
   const username = req.body.username;
   const password = req.body.password;
-  const name = req.body.name;
+  const email = req.body.email;
   const existUser = await User.findOne({ email: username });
   if (existUser) {
-    res.status(400).send("Username already exists");
+    res.status(400).send("Username already exist");
   }
   const user = new User({
     name:  username,
-    email: name,
+    email: email,
     password: password,
   });
   user.save();

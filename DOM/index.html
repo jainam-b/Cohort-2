@@ -1,0 +1,38 @@
+<!-- learning the DOM manipulation  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input1" type="number" placeholder="Enter a value"></input>
+    <input id="input2" type="number" placeholder="Enter a value"> </input>
+    <button onclick="populateDiv()">Calculate Sum</button>
+    <p id="result"></p>
+ 
+ 
+</body>
+ 
+   <script >
+    function myfun(){
+        
+       
+   
+    } 
+
+    async function populateDiv(){
+        let a=document.getElementById("input1").value;
+        var b=document.getElementById("input2").value;
+        const response =await fetch("https://sum-server.100xdevs.com/sum?a="+a+"&b="+b) ;
+        const ans=await response.text();
+        document.getElementById("result").innerHTML=ans;
+       
+
+    }
+ 
+   </script> 
+
+</html>
+https://sum-server.100xdevs.com/interest?principal=100&rate=5&time=2

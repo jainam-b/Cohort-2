@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" placeholder="Enter principal" id="principal" />
+    <input type="text" placeholder="Enter rate" id="rate" />
+    <input type="text" placeholder="Enter time" id="time" />
+    <button onclick="calInt()">Calculate Interest</button>
+    <h3 id="result"></h3>
+  </body>
+  <script>
+    async function calInt() {
+      const p = document.getElementById("principal").value;
+      const r = document.getElementById("rate").value;
+      const t = document.getElementById("time").value;
+      const response = await fetch(
+        "https://sum-server.100xdevs.com/interest?principal=" +
+          p +
+          "&rate=" +
+          r +
+          "&time=" +
+          t
+      );
+      const ans=await response.text();
+      document.getElementById("result").innerHTML=ans;
+    }
+  </script>
+</html>

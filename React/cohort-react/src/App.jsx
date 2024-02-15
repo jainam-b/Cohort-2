@@ -1,30 +1,26 @@
-/* eslint-disable react/prop-types */
-
+import React from "react";
+import { Fragment } from "react";
 import { useState } from "react";
-import "./App.css";
 
- 
 function App() {
-  
-  const [count,setcount]=useState(0);
-  return (
-    <div>
-       <CustomButton count={count} setcount={setcount} ></CustomButton>
-    </div>
-  );
-}
-
-function CustomButton(props) {
-  function onclickHandler() {
-    props.setcount(props.count + 1);
+  const [title, setTitle] = useState("jainam");
+  function updateTitle(){
+    setTitle("my name is"+Math.random())
   }
-
   return (
-    <button onClick={onclickHandler}>
-      Counter {props.count}
-    </button>
+    <Fragment>
+      <button onClick={updateTitle}>click me to change the title</button>
+      <Header title={title}></Header>
+      <Header title="jainam"></Header>
+       
+    </Fragment>
   );
 }
-
+function Header({title}){
+  return <div>
+    {title}
+  </div>
+}
+ 
 
 export default App;

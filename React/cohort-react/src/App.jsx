@@ -2,25 +2,34 @@ import React from "react";
 import { Fragment } from "react";
 import { useState } from "react";
 
-function App() {
+
+function App(){
+  return <div>
+    <HeaderwithButton></HeaderwithButton>
+     
+    <Header title="jainam"></Header>
+       
+
+  </div>
+}
+function HeaderwithButton() {
   const [title, setTitle] = useState("jainam");
   function updateTitle(){
-    setTitle("my name is"+Math.random())
+    setTitle("my name is"+ Math.random())
   }
   return (
-    <Fragment>
+    <div>
       <button onClick={updateTitle}>click me to change the title</button>
       <Header title={title}></Header>
-      <Header title="jainam"></Header>
-       
-    </Fragment>
+    </div>
   );
 }
-function Header({title}){
+
+// for not re rendering we use useMemo
+const Header=React.memo(function Header({title}){
   return <div>
     {title}
   </div>
-}
- 
+})
 
 export default App;

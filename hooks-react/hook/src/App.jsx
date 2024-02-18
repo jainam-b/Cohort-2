@@ -3,24 +3,28 @@ import axios from "axios";
 import "./App.css";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  useEffect(() => {
-    axios
-      .get("https://sum-server.100xdevs.com/todos")
-      .then(function (response) {
-        setTodos(response.data.todos);
-      });
-  }, []);
+  
 
   return <>
-  {todos.map(todo =><Todos title={todo.title}  description={todo.description}> </Todos>)}
+  {/* {todos.map(todo =><Todos title={todo.title}  description={todo.description}> </Todos>)} */}
+  <Todos id={1}></Todos>
   </>;
 }
 
-function Todos({title,description}){
+function Todos({id}){
+  
+  const [todo, setTodos] = useState([]);
+  
+  useEffect(() => {
+    axios
+      .get("https://sum-server.100xdevs.com/todo?id="+id )
+      .then(function (response) {
+        setTodos(response.data.todo);
+      });
+  }, []);
   return <div>
-    <h1>{title}</h1>
-    <h1>{description}</h1>
+    <h1>{ todo.title}</h1>
+    <h1>{ todo.description}</h1>
   </div>
 }
 export default App;

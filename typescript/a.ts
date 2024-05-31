@@ -1,5 +1,19 @@
-function greet(firstname:string){
-    console.log("Hello "+firstname);
-    
+interface User{
+    firstname: string;
+    lastname:string;
+    age:number;
 }
-greet("John");
+
+function isLegal(user:User){
+    if(user.age>18){
+        return true;
+    }else{
+        return false
+    }
+}
+
+isLegal({
+    firstname:"jainam",
+    lastname:"bagrecha",
+    age:20
+})

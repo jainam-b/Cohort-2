@@ -1,5 +1,14 @@
 "use strict";
-function greet(firstname) {
-    console.log("Hello " + firstname);
+function isLegal(user) {
+    if (user.age > 18) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
-greet("John");
+isLegal({
+    firstname: "jainam",
+    lastname: "bagrecha",
+    age: 20
+});
